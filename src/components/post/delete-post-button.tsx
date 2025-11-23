@@ -1,0 +1,44 @@
+import { useOpenAlertModal } from "@/store/alert-modal";
+import { Button } from "../ui/button";
+import { useDeletePost } from "@/hooks/mutations/post/use-delete-post";
+import { toast } from "sonner";
+import { useNavigate } from "react-router";
+
+export default function DeletePostButton({id}:{id:number}){
+
+    const openAlertModal = useOpenAlertModal();
+    const navigate = useNavigate()
+
+    const {mutate:deletePost, isPending:isDeletePostPending} = useDeletePost({
+        onSuccess:() => {
+            const pathname = window.location.pathname;
+            if(pathname.startsWith(`/post/${id}`)){
+                navigate("/", {replace:true })
+            }
+        },
+        onError:(error) => {
+            toast.error("포스트 삭제 실패",{
+                position: "top-center",
+            })
+        }
+    })
+    const handleDeleteClick = () => {
+        openAlertModal({
+            title:"포스트 삭제",
+            description:"정말 삭제하시겠습니까?",
+            onPositive: () => {
+                //포스트 삭제 요청
+                deletePost(id);
+            }
+        })
+    }
+
+    return(
+        <Button 
+        disabled={isDeletePostPending}
+        onClick={handleDeleteClick}
+        className="cursor-pointer" variant={"ghost"}>
+            삭제
+        </Button>
+    )
+}

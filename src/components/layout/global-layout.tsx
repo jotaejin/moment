@@ -1,7 +1,8 @@
 import { Link, Outlet } from "react-router";
 import logo from '@/assets/logo.png'
-import defaultAvatar from '@/assets/default-avatar.jpg'
 import { SunIcon } from "lucide-react";
+import ProfileButton from "./header/profile-button";
+import ThemeButton from "./header/theme-button";
 export default function GlobalLayout(){
     return(
         <div className="flex min-h-[100vh] flex-col">
@@ -15,12 +16,8 @@ export default function GlobalLayout(){
                         <div className="font-bold">Moment</div>
                     </Link>
                     <div className="flex items-center gap-5">
-                        <div className="hover:bg-muted cursor-pointer rounded-full p-2">
-                            <SunIcon />
-                        </div>
-                        <img 
-                        className="h-6"
-                        src={defaultAvatar}/>
+                        <ThemeButton />
+                        <ProfileButton />
                     </div>
                 </div>
             </header>
