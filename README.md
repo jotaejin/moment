@@ -73,21 +73,6 @@ React + TypeScript + Supabase 를 사용해 만든 **소셜 네트워크 서비�
   - RLS 정책 사용
 
 - Vercel (프론트 배포)
-  
-- ## 📂 폴더 구조
-
-src
-├── api # Supabase API 로직
-├── assets # 이미지, 아이콘
-├── components # UI 컴포넌트
-│ ├── post
-│ ├── comment
-│ ├── ui
-├── hooks # React Query + custom hooks
-├── lib # 유틸, 상수, supabase 클라이언트
-├── pages # 라우트 페이지
-├── store # Zustand 저장소
-└── types # TypeScript 타입
 
 ## 🛠️ 주요 기술 포인트
 
